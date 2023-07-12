@@ -16,8 +16,14 @@ class handler(BaseHTTPRequestHandler):
             # Construct the URL
             url = f"{base_url}/api/v2/assets/{uid}/data/{id}/enketo/edit/?return_url=false"
 
-            # Make a GET request
-            response = requests.get(url)
+            # Set the cookies for the session and csrf token
+            cookies = {
+                'sessionid': 'your_session_id',
+                'csrftoken': 'your_csrf_token'
+            }
+
+            # Make a GET request with the cookies
+            response = requests.get(url, cookies=cookies)
 
             # Ensure the request was successful
             if response.status_code == 200:
