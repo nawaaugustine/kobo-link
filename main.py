@@ -11,7 +11,7 @@ class handler(BaseHTTPRequestHandler):
         id = params.get('id')[0]
 
         # Your base URL, change if needed
-        base_url = "https://kf.kobotoolbox.org"
+        base_url = "https://kobo.unhcr.org"
 
         # Construct the URL
         url = f"{base_url}/api/v2/assets/{uid}/data/{id}/enketo/edit/?return_url=false"
