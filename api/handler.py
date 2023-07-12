@@ -17,7 +17,7 @@ class handler(BaseHTTPRequestHandler):
 
             # Authenticate with Kobo
             base_url = "https://kobo.unhcr.org"
-            auth_url = f"{base_url}/api-auth/login/"
+            auth_url = f"{base_url}/accounts/login/"
             auth_response = requests.post(auth_url, data={'username': username, 'password': password})
 
             # If authentication was successful
