@@ -9,13 +9,12 @@ class handler(BaseHTTPRequestHandler):
         params = parse_qs(urlparse(self.path).query)
         uid = params.get('uid')[0]
         id = params.get('id')[0]
-        edit = params.get('edit')[0]
 
         # Your base URL, change if needed
-        base_url = "https://kobo.unhcr.org"
+        base_url = "https://kf.kobotoolbox.org"
 
         # Construct the URL
-        url = f"{base_url}/api/v2/assets/{uid}/data/{id}/enketo/{edit}/?return_url=false"
+        url = f"{base_url}/api/v2/assets/{uid}/data/{id}/enketo/edit/?return_url=false"
 
         # Make a GET request
         response = requests.get(url)
