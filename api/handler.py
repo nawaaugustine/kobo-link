@@ -18,8 +18,7 @@ class handler(BaseHTTPRequestHandler):
 
             # Set the cookies for the session and csrf token
             cookies = {
-                'sessionid': 'your_session_id',
-                'csrftoken': 'your_csrf_token'
+                'csrftoken': 'KrwjjI9tJqHPBPG3qUH1ar1MvIgqOU9EaRh3VDqzigR3zMh9VhSJeImncfsFN5Yh'
             }
 
             # Make a GET request with the cookies
