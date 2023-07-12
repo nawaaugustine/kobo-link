@@ -23,10 +23,11 @@ class handler(BaseHTTPRequestHandler):
             params = parse_qs(urlparse(self.path).query)
             uid = params.get('uid')[0]
             id = params.get('id')[0]
+            action = params.get('action')[0]
 
             # Construct the URL for the GET request
             base_url = "https://kobo.unhcr.org"
-            url = f"{base_url}/api/v2/assets/{uid}/data/{id}/enketo/edit/?return_url=false"
+            url = f"{base_url}/api/v2/assets/{uid}/data/{id}/enketo/{action}/?return_url=false"
 
             # Make a GET request with the Basic Authentication header
             headers = {'Authorization': f'Basic {auth_header}'}
