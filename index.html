@@ -35,7 +35,7 @@
             var params = new URLSearchParams(window.location.search);
             var uid = params.get('uid');
             var id = params.get('id');
-            var id = params.get('action');
+            var action = params.get('action');
         
             $.ajax({
                 url: `https://kobo-link.vercel.app/api/handler?uid=${uid}&id=${id}&action=${action}`,
