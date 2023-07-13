@@ -38,7 +38,7 @@
             var action = params.get('action');
         
             $.ajax({
-                url: `https://kobo-link.vercel.app/api/handler?uid=${uid}&id=${id}&action=${action}`,
+                url: `https://kobo-link.vercel.app/api/handler?uid=${uid}&action=${action}&id=${id}`,
                 type: 'POST',
                 data: JSON.stringify({username: username, password: password}),
                 contentType: 'application/json',
