@@ -24,13 +24,40 @@
             </div>
         </div>
     </div>
+
     <script>
+        // Initialize IndexedDB
+        var request = indexedDB.open("CredentialsDB", 1);
+
+        request.onupgradeneeded = function(event) {
+            var db = event.target.result;
+            var objectStore = db.createObjectStore("credentials", {keyPath: "id"});
+        };
+
+        request.onsuccess = function(event) {
+            var db = event.target.result;
+            var transaction = db.transaction(["credentials"]);
+            var objectStore = transaction.objectStore("credentials");
+            var getRequest = objectStore.get(1);
+            getRequest.onsuccess = function(event) {
+                if (getRequest.result) {
+                    $('#username').val(getRequest.result.username);
+                    $('#password').val(getRequest.result.password);
+                }
+            };
+        };
+
         $('#loginForm').on('submit', function(e) {
             e.preventDefault();
-        
+
             var username = $('#username').val();
             var password = $('#password').val();
-        
+
+            var db = request.result;
+            var transaction = db.transaction(["credentials"], "readwrite");
+            var objectStore = transaction.objectStore("credentials");
+            objectStore.put({ id: 1, username: username, password: password });
+
             // Fetch uid and id from URL
             var params = new URLSearchParams(window.location.search);
             var uid = params.get('uid');
@@ -54,7 +81,6 @@
                 }
             });
         });
-        
     </script>
 </body>
 </html>
