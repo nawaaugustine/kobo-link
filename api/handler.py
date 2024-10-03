@@ -100,10 +100,10 @@ class handler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             # Set cookies
-            self.send_header('Set-Cookie', f'kobonaut={kobonaut_cookie}; Path=/; Domain=.unhcr.org; Secure; HttpOnly')
-            self.send_header('Set-Cookie', f'csrftoken={csrftoken_cookie}; Path=/; Domain=.unhcr.org; Secure; HttpOnly')
+            self.send_header('Set-Cookie', f'kobonaut={kobonaut_cookie}; Path=/; Secure; HttpOnly')
+            self.send_header('Set-Cookie', f'csrftoken={csrftoken_cookie}; Path=/; Secure; HttpOnly')
             if enketocsrf_cookie:
-                self.send_header('Set-Cookie', f'__csrf={enketocsrf_cookie}; Path=/; Domain=.unhcr.org; Secure; HttpOnly')
+                self.send_header('Set-Cookie', f'__csrf={enketocsrf_cookie}; Path=/; Secure; HttpOnly')
             self.end_headers()
             # Send the Enketo URL
             self.wfile.write(json.dumps({'url': enketo_url}).encode())
